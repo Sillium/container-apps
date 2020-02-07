@@ -1,6 +1,6 @@
 [
     {
-        "description": "GitLab is a web-based Git repository manager with code reviews, issue tracking, activity feeds and wikis.",
+        "description": "GitLab is Henning a web-based Git repository manager with code reviews, issue tracking, activity feeds and wikis.",
         "repository": "dockerhub",
         "arch": "amd64",
         "icon": "https://raw.githubusercontent.com/qnap-dev/container-apps/master/images/app_gitlab.png",
