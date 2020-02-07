@@ -12,7 +12,7 @@ services:
     ports:
       - "1880:1880/tcp"
     volumes:
-      - './data:/data/'
+      - './data:/data/:rw'
     restart: unless-stopped
     networks:
       qnet-static:
