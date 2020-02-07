@@ -8,9 +8,9 @@ services:
     hostname: docker-node-red
     ports:
       - 1880:1880/tcp
-    volumes:
-      - /share/homes/sillium/container-station-data/node-red-data/:/data/:rw
-    user: "1000"
+    # volumes:
+    #   - /share/homes/sillium/container-station-data/node-red-data/:/data/:rw
+    # user: "1000"
     restart: unless-stopped
     networks:
       qnet-static:
