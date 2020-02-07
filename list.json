@@ -560,5 +560,16 @@
         "version": "1.0.5",
         "location": "https://hub.docker.com/r/arm64v8/irssi/",
         "type": "docker"
+    },
+    {
+        "description": "PiHole for QNAP",
+        "repository": "dockerhub",
+        "arch": "arm64",
+        "icon": "",
+        "displayName": "PiHole QNAP",
+        "name": "sillium/docker-pihole-qnap",
+        "version": "0.1",
+        "location": "https://hub.docker.com/r/sillium/docker-pihole-qnap",
+        "type": "docker"
     }
 ]
