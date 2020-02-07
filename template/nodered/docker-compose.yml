@@ -2,11 +2,11 @@ version: '2.4'
 
 services:
   node-red:
-    # build:
-    #   context: ./
-    #   dockerfile: Dockerfile
-    # image: sillium/node-red:latest
-    image: nodered/node-red:latest
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: sillium/node-red:latest
+    # image: nodered/node-red:latest
     container_name: node-red
     hostname: docker-node-red
     ports:
