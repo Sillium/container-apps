@@ -11,10 +11,16 @@ services:
     # volumes:
     #   - /share/homes/sillium/container-station-data/node-red-data/:/data/:rw
     # user: "1000"
+    volumes:
+      - node-red-data
+
     restart: unless-stopped
     networks:
       qnet-static:
         ipv4_address: 192.168.65.3
+
+volumes:
+  node-red-data:
 
 networks:
   qnet-static:
