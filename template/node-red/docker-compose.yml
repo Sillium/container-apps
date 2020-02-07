@@ -1,0 +1,23 @@
+version: '2.4'
+
+services:
+  node-red:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: sillium/node-red:latest
+    container_name: node-red
+    hostname: docker-node-red
+    ports:
+      - "1880:1880/tcp"
+    volumes:
+      - './data:/data/'
+    restart: unless-stopped
+    networks:
+      qnet-static:
+        ipv4_address: 192.168.65.3
+
+networks:
+  qnet-static:
+    external: true
+    name: qnet-static-ip-network
