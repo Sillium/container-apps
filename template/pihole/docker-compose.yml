@@ -12,7 +12,7 @@ services:
       - "443:443/tcp"
     environment:
       TZ: 'Europe/Berlin'
-      #WEBPASSWORD: 'password'
+      WEBPASSWORD: 'admin'
       ServerIp: 192.168.65.53
     volumes:
       - './etc-pihole/:/etc/pihole/'
@@ -30,4 +30,4 @@ services:
 networks:
   qnet-static:
     external: true
-    name: basics_qnet-static
+    name: qnet-static-ip-network
