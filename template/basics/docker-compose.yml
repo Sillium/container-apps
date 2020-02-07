@@ -4,6 +4,7 @@ services:
   whoami:
     image: containous/whoami
     container_name: whoami
+    hostname: docker-whoami
     restart: unless-stopped
     networks:
       qnet-static:

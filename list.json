@@ -16,7 +16,7 @@
     {
         "description": "NodeRed",
         "arch": "amd64",
-        "displayName": "NodeRed",
+        "displayName": "Node-Red",
         "name": "node-red",
         "type": "app"
     }
