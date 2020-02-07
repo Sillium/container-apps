@@ -1,1 +1,14 @@
-[]
+[
+    {
+        "description": "Node-RED visual tool for wiring the Internet of Things",
+        "repository": "dockerhub",
+        "arch": "amd64",
+        "icon": "https://raw.githubusercontent.com/Sillium/container-apps/2.0/images/iot_node_red.png",
+        "displayName": "Node-RED",
+        "name": "nodered/node-red-docker",
+        "version": "latest",
+        "location": "https://hub.docker.com/r/nodered/node-red-docker/",
+        "type": "iot",
+        "qcsVersion": "1.5"
+    }
+]

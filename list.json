@@ -12,12 +12,5 @@
         "displayName": "Basics",
         "name": "basics",
         "type": "app"
-    },
-    {
-        "description": "NodeRed",
-        "arch": "amd64",
-        "displayName": "Node-Red",
-        "name": "node-red",
-        "type": "app"
     }
 ]
