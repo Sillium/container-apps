@@ -1,0 +1,22 @@
+version: '2.4'
+
+services:
+  whoami:
+    image: containous/whoami
+    container_name: whoami
+    restart: unless-stopped
+    networks:
+      qnet-static:
+        ipv4_address: 192.168.65.2
+
+networks:
+  qnet-static:
+    name: qnet-static-ip-network
+    driver: qnet
+    ipam:
+      driver: qnet
+      options:
+        iface: "eth0"
+      config:
+        - subnet: 192.168.64.0/22
+          gateway: 192.168.66.1
