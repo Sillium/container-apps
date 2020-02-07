@@ -11,8 +11,8 @@ services:
     hostname: docker-node-red
     ports:
       - "1880:1880/tcp"
-    volumes:
-      - './data:/data/:rw'
+    # volumes:
+    #   - './data:/data/:rw'
     restart: unless-stopped
     networks:
       qnet-static:
