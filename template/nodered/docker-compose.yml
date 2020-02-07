@@ -10,7 +10,7 @@ services:
       - 1880:1880/tcp
     volumes:
       - /share/homes/sillium/container-station-data/node-red-data/:/data/:rw
-    # user: "999"
+    user: "1000"
     restart: unless-stopped
     networks:
       qnet-static:
