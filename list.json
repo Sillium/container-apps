@@ -28,8 +28,6 @@
         "icon": "https://raw.githubusercontent.com/qnap-dev/container-apps/master/images/app_redmine.png",
         "displayName": "PiHole",
         "name": "pihole",
-        "version": "latest",
-        "location": "https://hub.docker.com/r/sillium/docker-pihole-qnap",
         "type": "app"
     },    
     {
