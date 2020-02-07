@@ -4,6 +4,7 @@ postgresql:
     - DB_USER=redmine
     - DB_PASS=password
     - DB_NAME=redmine_production
+    - TEST=test
 redmine:
   image: sameersbn/redmine:3.4.2
   links:
