@@ -1,5 +1,12 @@
 [
     {
+        "description": "PiHole",
+        "arch": "amd64",
+        "displayName": "PiHole",
+        "name": "pihole",
+        "type": "app"
+    },
+    {
         "description": "GitLab is Henning a web-based Git repository manager with code reviews, issue tracking, activity feeds and wikis.",
         "repository": "dockerhub",
         "arch": "amd64",
@@ -21,15 +28,6 @@
         "location": "https://hub.docker.com/r/sameersbn/redmine/",
         "type": "app"
     },
-    {
-        "description": "Pihole",
-        "repository": "dockerhub",
-        "arch": "amd64",
-        "icon": "https://raw.githubusercontent.com/qnap-dev/container-apps/master/images/app_redmine.png",
-        "displayName": "PiHole",
-        "name": "pihole",
-        "type": "app"
-    },    
     {
         "description": "The Registry is a tool for building private registries. It is highly scalable server side application for storing and distributing Docker images.",
         "repository": "dockerhub",
