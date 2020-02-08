@@ -2,17 +2,25 @@ version: '2.4'
 
 services:
   node-red:
-    # image: sillium/docker-node-red-qnap:latest
     image: nodered/node-red:latest
     container_name: node-red
     hostname: docker-node-red
     ports:
       - 1880:1880/tcp
-    # volumes:
-    #   - /share/homes/sillium/container-station-data/node-red-data/:/data/:rw
-    # user: "1000"
     volumes:
       - node-red-data:/data
+
+  node-red-backup:
+    image: futurice/docker-volume-backup:2.0.0
+    environment:
+      AWS_S3_BUCKET_NAME: docker-volume-backups-qnap
+      # AWS_ACCESS_KEY_ID: 
+      # AWS_SECRET_ACCESS_KEY: 
+      AWS_PROFILE: docker-volume-backups-qnap
+      BACKUP_FILENAME: node-red-data-backup.tar.gz
+    volumes:
+      - /root/.aws/credentials:~/.aws/credentials:ro
+      - node-red-data:/backup/node-red-data:ro
 
     restart: unless-stopped
     networks:
