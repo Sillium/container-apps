@@ -25,6 +25,7 @@ services:
       AWS_SHARED_CREDENTIALS_FILE: /.aws/credentials
       AWS_PROFILE: docker-volume-backups-qnap
       BACKUP_FILENAME: node-red-data-backup.tar.gz
+      BACKUP_CRON_EXPRESSION: "@hourly"
     volumes:
       - /root/.aws/credentials:/.aws/credentials:ro
       - node-red-data:/backup/node-red-data:ro
