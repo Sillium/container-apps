@@ -16,6 +16,8 @@ services:
 
   node-red-backup:
     image: futurice/docker-volume-backup:2.0.0
+    container_name: node-red-backup
+    hostname: docker-node-red-backup
     environment:
       AWS_S3_BUCKET_NAME: docker-volume-backups-qnap
       # AWS_ACCESS_KEY_ID: 
