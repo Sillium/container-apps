@@ -28,6 +28,9 @@ services:
       # AWS_PROFILE: docker-volume-backups-qnap
       BACKUP_FILENAME: node-red-data-backup.tar.gz
       BACKUP_CRON_EXPRESSION: "0/5 * * * *"
+    networks:
+      qnet-static:
+        ipv4_address: 192.168.65.4
     volumes:
       - /root/.aws/credentials:/.aws/credentials:ro
       - node-red-data:/backup/node-red-data:ro
