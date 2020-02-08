@@ -20,10 +20,10 @@ services:
     hostname: docker-node-red-backup
     environment:
       AWS_S3_BUCKET_NAME: docker-volume-backups-qnap
-      # AWS_ACCESS_KEY_ID: 
-      # AWS_SECRET_ACCESS_KEY: 
-      AWS_SHARED_CREDENTIALS_FILE: /.aws/credentials
-      AWS_PROFILE: docker-volume-backups-qnap
+      AWS_ACCESS_KEY_ID: AKIA5T6KDR4XUAPTNT4H
+      AWS_SECRET_ACCESS_KEY: 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
+      # AWS_SHARED_CREDENTIALS_FILE: /.aws/credentials
+      # AWS_PROFILE: docker-volume-backups-qnap
       BACKUP_FILENAME: node-red-data-backup.tar.gz
       BACKUP_CRON_EXPRESSION: "@hourly"
     volumes:
