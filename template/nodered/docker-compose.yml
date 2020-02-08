@@ -27,7 +27,7 @@ services:
       # AWS_SHARED_CREDENTIALS_FILE: /.aws/credentials
       # AWS_PROFILE: docker-volume-backups-qnap
       BACKUP_FILENAME: node-red-data-backup.tar.gz
-      BACKUP_CRON_EXPRESSION: "0/5 * * * *"
+      BACKUP_CRON_EXPRESSION: "@daily"
     networks:
       qnet-static:
         ipv4_address: 192.168.65.4
