@@ -9,6 +9,10 @@ services:
       - 1880:1880/tcp
     volumes:
       - node-red-data:/data
+    restart: unless-stopped
+    networks:
+      qnet-static:
+        ipv4_address: 192.168.65.3
 
   node-red-backup:
     image: futurice/docker-volume-backup:2.0.0
@@ -16,16 +20,12 @@ services:
       AWS_S3_BUCKET_NAME: docker-volume-backups-qnap
       # AWS_ACCESS_KEY_ID: 
       # AWS_SECRET_ACCESS_KEY: 
+      AWS_SHARED_CREDENTIALS_FILE: /.aws/credentials
       AWS_PROFILE: docker-volume-backups-qnap
       BACKUP_FILENAME: node-red-data-backup.tar.gz
     volumes:
-      - /root/.aws/credentials:~/.aws/credentials:ro
+      - /root/.aws/credentials:/.aws/credentials:ro
       - node-red-data:/backup/node-red-data:ro
-
-    restart: unless-stopped
-    networks:
-      qnet-static:
-        ipv4_address: 192.168.65.3
 
 volumes:
   node-red-data:
