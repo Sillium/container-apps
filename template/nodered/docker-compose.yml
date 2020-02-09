@@ -36,6 +36,24 @@ services:
 # https://github.com/blacklabelops/volumerize/tree/master/backends/AmazonS3
 # instead
 
+  node-red-backup:
+    image: blacklabelops/volumerize:latest
+    container_name: node-red-backup
+    hostname: docker-node-red-backup
+    env_file:
+      # This file contains AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY:
+      - /share/Container/container-station-data/env_vars.env
+    environment:
+      VOLUMERIZE_SOURCE: /source
+      VOLUMERIZE_TARGET: s3://s3.eu-central-1.amazonaws.com/docker-volume-backups-qnap/node-red
+    volumes:
+      - node-red-data:/source:ro
+      - volumerize_cache:/volumerize-cache
+    restart: unless-stopped
+    networks:
+      qnet-static:
+        ipv4_address: 192.168.65.4
+
 volumes:
   node-red-data:
 
