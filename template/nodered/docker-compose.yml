@@ -48,7 +48,7 @@ services:
       VOLUMERIZE_TARGET: s3://s3.eu-central-1.amazonaws.com/docker-volume-backups-qnap/node-red
     volumes:
       - node-red-data:/source:ro
-      - volumerize_cache:/volumerize-cache
+      - volumerize-cache:/volumerize-cache
     restart: unless-stopped
     networks:
       qnet-static:
