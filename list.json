@@ -2,7 +2,7 @@
     {
         "description": "PiHole",
         "arch": "amd64",
-        "icon": "https://raw.githubusercontent.com/Sillium/container-apps/2.0/images/app_pihole.png",
+        "icon": "https://raw.githubusercontent.com/Sillium/container-apps/master/images/app_pihole.png",
         "displayName": "PiHole",
         "name": "pihole",
         "type": "app"
@@ -10,7 +10,7 @@
     {
         "description": "Basics QNET external network with static IPs 192.168.65.x",
         "arch": "amd64",
-        "icon": "https://www.qnap.com/solution/qiot-suite-platform/images/sqfk-r2-icon.png",
+        "icon": "https://raw.githubusercontent.com/Sillium/container-apps/master/images/app_basics.png",
         "displayName": "Basics",
         "name": "basics",
         "type": "app"
@@ -18,7 +18,7 @@
     {
         "description": "Node-RED visual tool for wiring the Internet of Things",
         "arch": "amd64",
-        "icon": "https://raw.githubusercontent.com/Sillium/container-apps/2.0/images/app_node_red.png",
+        "icon": "https://raw.githubusercontent.com/Sillium/container-apps/master/images/app_node_red.png",
         "displayName": "Node-RED",
         "name": "nodered",
         "type": "app"
