@@ -10,7 +10,7 @@
     {
         "description": "Basics QNET external network with static IPs 192.168.65.x",
         "arch": "amd64",
-        "icon": "https://raw.githubusercontent.com/Sillium/container-apps/2.0/images/app_basics.png",
+        "icon": "https://www.qnap.com/solution/qiot-suite-platform/images/sqfk-r2-icon.png",
         "displayName": "Basics",
         "name": "basics",
         "type": "app"
