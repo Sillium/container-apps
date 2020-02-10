@@ -31,7 +31,7 @@ services:
       VOLUMERIZE_FULL_IF_OLDER_THAN: 7D
       VOLUMERIZE_JOBBER_TIME: 0 0 3 * * * # every day 3 am
     volumes:
-      - node-red-data:/source # left out the ":ro" parameter for being able to restore within the same container
+      - node-red-data:/source # left out the ":ro" parameter for being able to restore within the same container with 'docker exec node-red-backup restore'
       - volumerize-cache:/volumerize-cache
     restart: unless-stopped
     networks:
