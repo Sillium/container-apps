@@ -1,49 +1,47 @@
 version: '2.4'
 
 services:
-  node-red:
-    image: nodered/node-red:latest
-    container_name: node-red
-    hostname: docker-node-red
+  influxdb:
+    image: quay.io/influxdb/influxdb:2.0.0-beta
+    container_name: influxdb
+    hostname: docker-influxdb
     ports:
-      - 1880:1880/tcp # Web-Frontend
-      - 2061:2061/tcp # node-red-contrib-ccu
-      - 2062:2062/tcp # node-red-contrib-ccu
+      - 9999:9999/tcp # Web-Frontend
     environment:
       TZ: Europe/Berlin
     volumes:
-      - node-red-data:/data
+      - influxdb-data:/var/lib/influxdb
     restart: unless-stopped
     networks:
       qnet-static:
-        ipv4_address: 192.168.65.3
+        ipv4_address: 192.168.65.10
 
 # Backup and restore with this
 # https://github.com/blacklabelops/volumerize/tree/master/backends/AmazonS3
 
-  node-red-backup:
+  influxdb-backup:
     image: blacklabelops/volumerize:latest
-    container_name: node-red-backup
-    hostname: docker-node-red-backup
+    container_name: influxdb-backup
+    hostname: docker-influxdb-backup
     env_file:
       # This file contains AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY:
       - /share/Container/container-station-data/env_vars.env
     environment:
       TZ: Europe/Berlin
       VOLUMERIZE_SOURCE: /source
-      VOLUMERIZE_TARGET: s3://s3.eu-central-1.amazonaws.com/docker-volume-backups-qnap/node-red
+      VOLUMERIZE_TARGET: s3://s3.eu-central-1.amazonaws.com/docker-volume-backups-qnap/influxdb
       VOLUMERIZE_FULL_IF_OLDER_THAN: 7D
       VOLUMERIZE_JOBBER_TIME: 0 0 3 * * * # every day 3 am
     volumes:
-      - node-red-data:/source # left out the ":ro" parameter for being able to restore within the same container with 'docker exec node-red-backup restore'
+      - influxdb-data:/source # left out the ":ro" parameter for being able to restore within the same container with 'docker exec influxdb-backup restore'
       - volumerize-cache:/volumerize-cache
     restart: unless-stopped
     networks:
       qnet-static:
-        ipv4_address: 192.168.65.4
+        ipv4_address: 192.168.65.11
 
 volumes:
-  node-red-data:
+  influxdb-data:
   volumerize-cache:
 
 networks:

@@ -22,5 +22,13 @@
         "displayName": "Node-RED",
         "name": "nodered",
         "type": "app"
+    },
+    {
+        "description": "InfluxDB",
+        "arch": "amd64",
+        "icon": "https://raw.githubusercontent.com/Sillium/container-apps/master/images/app_node_red.png",
+        "displayName": "InfluxDB",
+        "name": "influxdb",
+        "type": "app"
     }
 ]
