@@ -10,7 +10,7 @@ services:
     environment:
       TZ: Europe/Berlin
     volumes:
-      - influxdb-data:/var/lib/influxdb
+      - influxdb-data:/root/.influxdbv2
     restart: unless-stopped
     networks:
       qnet-static:
