@@ -25,10 +25,13 @@ services:
       # This file contains AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY:
       - /share/Container/container-station-data/env_vars.env
     environment:
+      TZ: Europe/Berlin
       VOLUMERIZE_SOURCE: /source
       VOLUMERIZE_TARGET: s3://s3.eu-central-1.amazonaws.com/docker-volume-backups-qnap/node-red
+      VOLUMERIZE_FULL_IF_OLDER_THAN: 7D
+      VOLUMERIZE_JOBBER_TIME: 0 0 3 * * * # every day 3 am
     volumes:
-      - node-red-data:/source:ro
+      - node-red-data:/source # left out the ":ro" parameter for being able to restore within the same container
       - volumerize-cache:/volumerize-cache
     restart: unless-stopped
     networks:
