@@ -14,27 +14,8 @@ services:
       qnet-static:
         ipv4_address: 192.168.65.3
 
-  # node-red-backup:
-  #   image: futurice/docker-volume-backup:2.0.0
-  #   container_name: node-red-backup
-  #   hostname: docker-node-red-backup
-  #   env_file:
-  #     # This file contains AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY:
-  #     - /share/Container/container-station-data/env_vars.env
-  #   environment:
-  #     AWS_S3_BUCKET_NAME: docker-volume-backups-qnap
-  #     BACKUP_FILENAME: node-red-data-backup.tar.gz
-  #     BACKUP_CRON_EXPRESSION: "@daily"
-  #   volumes:
-  #     - node-red-data:/backup/node-red-data:ro
-  #   restart: unless-stopped
-  #   networks:
-  #     qnet-static:
-  #       ipv4_address: 192.168.65.4
-
 # Backup and restore with this
 # https://github.com/blacklabelops/volumerize/tree/master/backends/AmazonS3
-# instead
 
   node-red-backup:
     image: blacklabelops/volumerize:latest
