@@ -6,7 +6,9 @@ services:
     container_name: node-red
     hostname: docker-node-red
     ports:
-      - 1880:1880/tcp
+      - 1880:1880/tcp # Web-Frontend
+      - 2061:2061/tcp # node-red-contrib-ccu
+      - 2062:2062/tcp # node-red-contrib-ccu
     volumes:
       - node-red-data:/data
     restart: unless-stopped
