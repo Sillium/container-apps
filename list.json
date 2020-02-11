@@ -26,7 +26,7 @@
     {
         "description": "InfluxDB",
         "arch": "amd64",
-        "icon": "https://raw.githubusercontent.com/Sillium/container-apps/master/images/app_node_red.png",
+        "icon": "https://raw.githubusercontent.com/Sillium/container-apps/master/images/app_influxdb.png",
         "displayName": "InfluxDB",
         "name": "influxdb",
         "type": "app"
