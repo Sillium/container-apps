@@ -30,5 +30,13 @@
         "displayName": "InfluxDB",
         "name": "influxdb",
         "type": "app"
+    },
+    {
+        "description": "Grafana",
+        "arch": "amd64",
+        "icon": "https://raw.githubusercontent.com/Sillium/container-apps/master/images/app_grafana.png",
+        "displayName": "Grafana",
+        "name": "grafana",
+        "type": "app"
     }
 ]

@@ -1,0 +1,63 @@
+version: '2.4'
+
+services:
+  grafana:
+    image: grafana/grafana:master
+    container_name: grafana
+    hostname: docker-grafana
+    ports:
+     - "3000:3000"
+    environment:
+      GF_RENDERING_SERVER_URL: http://192.168.65.13:8081/render
+      GF_RENDERING_CALLBACK_URL: http://192.168.65.12:3000/
+      GF_LOG_FILTERS: rendering:debug
+      TZ: Europe/Berlin
+    volumes:
+      - grafana-data:/var/lib/grafana
+    restart: unless-stopped
+    networks:
+      qnet-static:
+        ipv4_address: 192.168.65.12
+
+  grafana-image-renderer:
+    image: grafana/grafana-image-renderer:latest
+    container_name: grafana-image-renderer
+    hostname: docker-grafana-image-renderer
+    restart: unless-stopped
+    ports:
+      - 8081
+    environment:
+      TZ: Europe/Berlin
+    networks:
+      qnet-static:
+        ipv4_address: 192.168.65.13
+
+  grafana-backup:
+    image: blacklabelops/volumerize:latest
+    container_name: grafana-backup
+    hostname: docker-grafana-backup
+    env_file:
+      # This file contains AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY:
+      - /share/Container/container-station-data/env_vars.env
+    environment:
+      TZ: Europe/Berlin
+      VOLUMERIZE_SOURCE: /source
+      VOLUMERIZE_TARGET: s3://s3.eu-central-1.amazonaws.com/docker-volume-backups-qnap/grafana
+      VOLUMERIZE_FULL_IF_OLDER_THAN: 7D
+      VOLUMERIZE_JOBBER_TIME: 0 0 3 * * * # every day 3 am
+    volumes:
+      - grafana-data:/source # left out the ":ro" parameter for being able to restore within the same container with 'docker exec grafana-backup restore'
+      - volumerize-cache:/volumerize-cache
+    restart: unless-stopped
+    networks:
+      qnet-static:
+        ipv4_address: 192.168.65.14
+
+volumes:
+  grafana-data:
+  volumerize-cache:
+
+networks:
+  qnet-static:
+    external: true
+    name: qnet-static-ip-network
