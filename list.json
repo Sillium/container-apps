@@ -38,5 +38,13 @@
         "displayName": "Grafana",
         "name": "grafana",
         "type": "app"
+    },
+    {
+        "description": "mitmproxy",
+        "arch": "amd64",
+        "icon": "https://raw.githubusercontent.com/Sillium/container-apps/master/images/app_mitmproxy.png",
+        "displayName": "mitmproxy",
+        "name": "mitmproxy",
+        "type": "app"
     }
 ]

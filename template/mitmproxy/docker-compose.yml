@@ -1,0 +1,22 @@
+version: '2.4'
+
+services:
+  influxdb:
+    image: mitmproxy/mitmproxy
+    container_name: mitmproxy
+    hostname: docker-mitmproxy
+    ports:
+      - 8080:8080/tcp # Proxy
+      - 8081:8081/tcp # Web-Frontend
+    command: mitmweb --web-iface 0.0.0.0
+    environment:
+      TZ: Europe/Berlin
+    restart: unless-stopped
+    networks:
+      qnet-static:
+        ipv4_address: 192.168.65.50
+
+networks:
+  qnet-static:
+    external: true
+    name: qnet-static-ip-network
