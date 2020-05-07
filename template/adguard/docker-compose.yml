@@ -1,0 +1,37 @@
+version: '2.4'
+
+services:
+  pihole:
+    image: adguard/adguardhome:latest
+    container_name: adguard
+    hostname: docker-adguard
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "67:67/udp"
+      - "68:68/udp"
+      - "80:80/tcp"
+      - "443:443/tcp"
+      - "853:853/tcp"
+      - "3000:3000/tcp"
+    environment:
+      TZ: 'Europe/Berlin'
+      # WEBPASSWORD: 'admin'
+      # ServerIp: 192.168.65.53
+    # volumes:
+    #   - './etc-pihole/:/etc/pihole/'
+    #   - './etc-dnsmasq.d/:/etc/dnsmasq.d/'
+    # dns:
+    #   - 127.0.0.1
+    #   - 1.1.1.1
+    # cap_add:
+    #   - NET_ADMIN
+    restart: unless-stopped
+    networks:
+      qnet-static:
+        ipv4_address: 192.168.65.54
+
+networks:
+  qnet-static:
+    external: true
+    name: qnet-static-ip-network

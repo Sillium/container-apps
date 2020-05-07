@@ -46,5 +46,13 @@
         "displayName": "mitmproxy",
         "name": "mitmproxy",
         "type": "app"
+    },
+    {
+        "description": "AdGuard",
+        "arch": "amd64",
+        "icon": "https://raw.githubusercontent.com/Sillium/container-apps/master/images/app_adguard.jpg",
+        "displayName": "AdGuard",
+        "name": "adguard",
+        "type": "app"
     }
 ]
