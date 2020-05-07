@@ -50,7 +50,7 @@
     {
         "description": "AdGuard",
         "arch": "amd64",
-        "icon": "https://raw.githubusercontent.com/Sillium/container-apps/master/images/app_adguard.jpg",
+        "icon": "https://raw.githubusercontent.com/Sillium/container-apps/master/images/app_adguard.png",
         "displayName": "AdGuard",
         "name": "adguard",
         "type": "app"
