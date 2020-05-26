@@ -42,7 +42,7 @@ services:
         ipv4_address: 192.168.65.16
 
 volumes:
-  grafana-data:
+  homebridge-data:
   volumerize-cache:
 
 networks:
