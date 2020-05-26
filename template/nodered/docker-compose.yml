@@ -5,6 +5,7 @@ services:
     image: nodered/node-red:latest
     container_name: node-red
     hostname: docker-node-red
+    mac_address: 02:42:2b:6f:65:03
     ports:
       - 1880:1880/tcp # Web-Frontend
       - 2061:2061/tcp # node-red-contrib-ccu
@@ -25,6 +26,7 @@ services:
     image: blacklabelops/volumerize:latest
     container_name: node-red-backup
     hostname: docker-node-red-backup
+    mac_address: 02:42:2b:6f:65:04
     env_file:
       # This file contains AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY:
       - /share/Container/container-station-data/env_vars.env

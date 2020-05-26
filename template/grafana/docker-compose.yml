@@ -5,6 +5,7 @@ services:
     image: grafana/grafana:master
     container_name: grafana
     hostname: docker-grafana
+    mac_address: 02:42:2b:6f:65:12
     ports:
      - "3000:3000"
     environment:
@@ -24,6 +25,7 @@ services:
     container_name: grafana-image-renderer
     hostname: docker-grafana-image-renderer
     restart: unless-stopped
+    mac_address: 02:42:2b:6f:65:13
     ports:
       - 8081
     environment:
@@ -36,6 +38,7 @@ services:
     image: blacklabelops/volumerize:latest
     container_name: grafana-backup
     hostname: docker-grafana-backup
+    mac_address: 02:42:2b:6f:65:14
     env_file:
       # This file contains AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY:
       - /share/Container/container-station-data/env_vars.env

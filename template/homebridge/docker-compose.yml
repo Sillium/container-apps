@@ -1,0 +1,51 @@
+version: '2.4'
+
+services:
+  homebridge:
+    image: oznu/homebridge:latest
+    container_name: homebridge
+    hostname: docker-homebridge
+    mac_address: 02:42:2b:6f:65:15
+    ports:
+      - "8080:8080"
+    environment:
+      TZ: Europe/Berlin
+      HOMEBRIDGE_CONFIG_UI: 1
+      HOMEBRIDGE_CONFIG_UI_PORT: 8080
+    volumes:
+      - homebridge-data:/homebridge
+    restart: unless-stopped
+    networks:
+      qnet-static:
+        ipv4_address: 192.168.65.15
+
+  homebridge-backup:
+    image: blacklabelops/volumerize:latest
+    container_name: homebridge-backup
+    hostname: docker-homebridge-backup
+    mac_address: 02:42:2b:6f:65:16
+    env_file:
+      # This file contains AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY:
+      - /share/Container/container-station-data/env_vars.env
+    environment:
+      TZ: Europe/Berlin
+      VOLUMERIZE_SOURCE: /source
+      VOLUMERIZE_TARGET: s3://s3.eu-central-1.amazonaws.com/docker-volume-backups-qnap/homebridge
+      VOLUMERIZE_FULL_IF_OLDER_THAN: 7D
+      VOLUMERIZE_JOBBER_TIME: 0 0 3 * * * # every day 3 am
+    volumes:
+      - homebridge-data:/source # left out the ":ro" parameter for being able to restore within the same container with 'docker exec homebridge-backup restore'
+      - volumerize-cache:/volumerize-cache
+    restart: unless-stopped
+    networks:
+      qnet-static:
+        ipv4_address: 192.168.65.16
+
+volumes:
+  grafana-data:
+  volumerize-cache:
+
+networks:
+  qnet-static:
+    external: true
+    name: qnet-static-ip-network

@@ -5,6 +5,7 @@ services:
     image: adguard/adguardhome:latest
     container_name: adguard
     hostname: docker-adguard
+    mac_address: 02:42:2b:6f:65:54
     ports:
       - "53:53/tcp"
       - "53:53/udp"

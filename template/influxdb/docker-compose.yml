@@ -5,6 +5,7 @@ services:
     image: quay.io/influxdb/influxdb:2.0.0-beta
     container_name: influxdb
     hostname: docker-influxdb
+    mac_address: 02:42:2b:6f:65:10
     ports:
       - 9999:9999/tcp # Web-Frontend
     environment:
@@ -23,6 +24,7 @@ services:
     image: blacklabelops/volumerize:latest
     container_name: influxdb-backup
     hostname: docker-influxdb-backup
+    mac_address: 02:42:2b:6f:65:11
     env_file:
       # This file contains AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY:
       - /share/Container/container-station-data/env_vars.env

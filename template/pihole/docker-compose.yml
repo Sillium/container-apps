@@ -5,6 +5,7 @@ services:
     image: pihole/pihole:latest
     container_name: pihole
     hostname: docker-pihole
+    mac_address: 02:42:2b:6f:65:53
     ports:
       - "53:53/tcp"
       - "53:53/udp"

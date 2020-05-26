@@ -5,6 +5,7 @@ services:
     image: containous/whoami
     container_name: whoami
     hostname: docker-whoami
+    mac_address: 02:42:2b:6f:65:02
     restart: unless-stopped
     networks:
       qnet-static:

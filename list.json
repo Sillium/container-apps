@@ -54,5 +54,13 @@
         "displayName": "AdGuard",
         "name": "adguard",
         "type": "app"
+    },
+    {
+        "description": "Homebridge",
+        "arch": "amd64",
+        "icon": "https://raw.githubusercontent.com/Sillium/container-apps/master/images/app_homebridge.png",
+        "displayName": "Homebridge",
+        "name": "homebridge",
+        "type": "app"
     }
 ]
