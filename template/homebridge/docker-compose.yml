@@ -8,6 +8,7 @@ services:
     mac_address: 02:42:2b:6f:65:15
     ports:
       - "8080:8080"
+      - "8181:8181" # Shelly Plugin admin interface
     environment:
       TZ: Europe/Berlin
       HOMEBRIDGE_CONFIG_UI: 1
