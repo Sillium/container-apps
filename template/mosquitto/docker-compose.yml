@@ -2,7 +2,7 @@ version: '2.4'
 
 services:
   mosquitto:
-    build: .
+    image: eclipse-mosquitto:latest
     container_name: mosquitto
     hostname: docker-mosquitto
     mac_address: 02:42:2b:6f:65:17
@@ -13,7 +13,6 @@ services:
       TZ: Europe/Berlin
     volumes:
       - mosquitto-data:/mosquitto/data
-      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
     restart: unless-stopped
     networks:
       qnet-static:
