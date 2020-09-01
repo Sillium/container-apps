@@ -1,0 +1,52 @@
+version: '2.4'
+
+services:
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: mosquitto
+    hostname: docker-mosquitto
+    mac_address: 02:42:2b:6f:65:17
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    environment:
+      TZ: Europe/Berlin
+    volumes:
+      - mosquitto-data:/mosquitto/data
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - ./mosquitto.log:/mosquitto/log/mosquitto.log
+    restart: unless-stopped
+    networks:
+      qnet-static:
+        ipv4_address: 192.168.65.17
+
+  mosquitto-backup:
+    image: blacklabelops/volumerize:latest
+    container_name: mosquitto-backup
+    hostname: docker-mosquitto-backup
+    mac_address: 02:42:2b:6f:65:18
+    env_file:
+      # This file contains AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY:
+      - /share/Container/container-station-data/env_vars.env
+    environment:
+      TZ: Europe/Berlin
+      VOLUMERIZE_SOURCE: /source
+      VOLUMERIZE_TARGET: s3://s3.eu-central-1.amazonaws.com/docker-volume-backups-qnap/mosquitto
+      VOLUMERIZE_FULL_IF_OLDER_THAN: 7D
+      VOLUMERIZE_JOBBER_TIME: 0 0 3 * * * # every day 3 am
+    volumes:
+      - mosquitto-data:/source # left out the ":ro" parameter for being able to restore within the same container with 'docker exec mosquitto-backup restore'
+      - volumerize-cache:/volumerize-cache
+    restart: unless-stopped
+    networks:
+      qnet-static:
+        ipv4_address: 192.168.65.18
+
+volumes:
+  mosquitto-data:
+  volumerize-cache:
+
+networks:
+  qnet-static:
+    external: true
+    name: qnet-static-ip-network
