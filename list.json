@@ -62,5 +62,13 @@
         "displayName": "Homebridge",
         "name": "homebridge",
         "type": "app"
+    },
+    {
+        "description": "Mosquitto",
+        "arch": "amd64",
+        "icon": "https://raw.githubusercontent.com/Sillium/container-apps/master/images/app_mosquitto.png",
+        "displayName": "Mosquitto",
+        "name": "mosquitto",
+        "type": "app"
     }
 ]
