@@ -70,5 +70,13 @@
         "displayName": "Mosquitto",
         "name": "mosquitto",
         "type": "app"
+    },
+    {
+        "description": "Home-Assistant",
+        "arch": "amd64",
+        "icon": "https://raw.githubusercontent.com/Sillium/container-apps/master/images/app_mosquitto.png",
+        "displayName": "Home-Assistant",
+        "name": "homeassistant",
+        "type": "app"
     }
 ]
