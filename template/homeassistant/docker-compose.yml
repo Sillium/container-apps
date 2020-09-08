@@ -40,7 +40,7 @@ services:
         ipv4_address: 192.168.65.20
 
   home-assistant-configurator:
-    image: causticlab/hass-configurator-docker:arm
+    image: causticlab/hass-configurator-docker:x86_64
     container_name: home-assistant-configurator
     hostname: docker-home-assistant-configurator
     mac_address: 02:42:2b:6f:65:21
