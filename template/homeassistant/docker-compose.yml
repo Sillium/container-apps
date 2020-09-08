@@ -39,9 +39,27 @@ services:
       qnet-static:
         ipv4_address: 192.168.65.20
 
+  home-assistant-configurator:
+    image: causticlab/hass-configurator-docker:arm
+    container_name: home-assistant-configurator
+    hostname: docker-home-assistant-configurator
+    mac_address: 02:42:2b:6f:65:21
+    restart: unless-stopped
+    ports:
+      - "3218:3218/tcp"
+    environment:
+      TZ: Europe/Berlin
+    volumes:
+      - home-assistant-configurator-data:/config
+      - home-assistant-data:/hass-config
+    networks:
+      qnet-static:
+        ipv4_address: 192.168.65.21
+
 volumes:
   home-assistant-data:
   volumerize-cache:
+  home-assistant-configurator-data:
 
 networks:
   qnet-static:
