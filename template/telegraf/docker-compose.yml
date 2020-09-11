@@ -1,0 +1,59 @@
+version: '2.4'
+
+services:
+  telegraf:
+    image: telegraf
+    container_name: telegraf
+    hostname: docker-telegraf
+    mac_address: 02:42:2b:6f:65:22
+    extra_hosts:
+     - "influxdb:192.168.65.10"
+    environment:
+      TZ: Europe/Berlin
+      HOST_PROC: /rootfs/proc
+      HOST_SYS: /rootfs/sys
+      HOST_ETC: /rootfs/etc
+    volumes:
+     - telegraf-data:/etc/telegraf
+     - /var/run/docker.sock:/var/run/docker.sock:ro
+     - /sys:/rootfs/sys:ro
+     - /proc:/rootfs/proc:ro
+     - /etc:/rootfs/etc:ro
+    restart: unless-stopped
+    networks:
+      qnet-static:
+        ipv4_address: 192.168.65.22
+
+# Backup and restore with this
+# https://github.com/blacklabelops/volumerize/tree/master/backends/AmazonS3
+
+  telegraf-backup:
+    image: blacklabelops/volumerize:latest
+    container_name: telegraf-backup
+    hostname: docker-telegraf-backup
+    mac_address: 02:42:2b:6f:65:23
+    env_file:
+      # This file contains AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY:
+      - /share/Container/container-station-data/env_vars.env
+    environment:
+      TZ: Europe/Berlin
+      VOLUMERIZE_SOURCE: /source
+      VOLUMERIZE_TARGET: s3://s3.eu-central-1.amazonaws.com/docker-volume-backups-qnap/telegraf
+      VOLUMERIZE_FULL_IF_OLDER_THAN: 7D
+      VOLUMERIZE_JOBBER_TIME: 0 0 3 * * * # every day 3 am
+    volumes:
+      - telegraf-data:/source # left out the ":ro" parameter for being able to restore within the same container with 'docker exec telegraf-backup restore'
+      - volumerize-cache:/volumerize-cache
+    restart: unless-stopped
+    networks:
+      qnet-static:
+        ipv4_address: 192.168.65.23
+
+volumes:
+  telegraf-data:
+  volumerize-cache:
+
+networks:
+  qnet-static:
+    external: true
+    name: qnet-static-ip-network
