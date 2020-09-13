@@ -14,7 +14,7 @@ services:
       HOST_SYS: /rootfs/sys
       HOST_ETC: /rootfs/etc
     volumes:
-     - telegraf.conf:/etc/telegraf/telegraf.conf:ro
+     - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
      - /var/run/docker.sock:/var/run/docker.sock:ro
      - /sys:/rootfs/sys:ro
      - /proc:/rootfs/proc:ro
