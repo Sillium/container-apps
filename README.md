@@ -4,6 +4,18 @@ container-apps
 An image and application list for [QNAP Container Station](https://www.qnap.com/solution/container_station/en-us/).
 
 
+Repository structure
+-------------------
+
+* `list.json`: Image and application list (Docker Hub, LXC and app entries).
+* `ai.json`, `iot.json`: Additional lists for AI and IoT images.
+* `render.json`: Currently an empty list.
+* `template/`: Docker Compose templates and wizard files (description, i18n, stages) for the applications (`gitlab`, `joomla`, `odoo`, `odooarm`, `redmine`, `registry`, `wordpress`), plus examples in `template/sample`.
+* `images/`: Icons and application images referenced by the lists.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the format of the list entries.
+
+
 Using your own image list
 -------------------------
 
